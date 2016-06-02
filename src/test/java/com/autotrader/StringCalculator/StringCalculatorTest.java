@@ -29,4 +29,9 @@ public class StringCalculatorTest {
 	public void shouldCalculateEmptyResult(){
 		assertThat(stringCalculator.calculateResult("")).isEqualTo(-1);
 	}
+	
+	@Test
+	public void shouldCalculateADifferentSingleDigitResult() {
+		assertThat(stringCalculator.calculateResult("5")).isEqualTo(5);
+	}
 }
