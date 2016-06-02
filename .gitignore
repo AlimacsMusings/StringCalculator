@@ -2,6 +2,12 @@
 Thumbs.db
 ehthumbs.db
 
+# Project files to ignore
+.project
+.classpath
+.settings
+target/
+
 # Folder config file
 Desktop.ini
 
