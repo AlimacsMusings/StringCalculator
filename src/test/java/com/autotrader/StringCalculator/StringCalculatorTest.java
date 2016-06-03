@@ -34,4 +34,5 @@ public class StringCalculatorTest {
 	public void shouldCalculateADifferentSingleDigitResult() {
 		assertThat(stringCalculator.calculateResult("5")).isEqualTo(5);
 	}
+	
 }
