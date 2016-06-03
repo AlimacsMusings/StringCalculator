@@ -1,5 +1,7 @@
 package com.autotrader.StringCalculator;
 
+import java.util.StringTokenizer;
+
 public class StringCalculator {
 
 	private int result;
@@ -12,7 +14,17 @@ public class StringCalculator {
 		}
 		
 		if(input.contains(",")) {
-			return 6;
+			
+			StringTokenizer st = new StringTokenizer(input, ",", false);
+			int total = 0;
+			while(st.hasMoreTokens()){
+			
+				if(isNotANumber(st.nextToken())){
+					return -1;
+				}
+				total = total + result;
+			}
+			return total;
 		}
 		
 		if(isNotANumber(input)){
