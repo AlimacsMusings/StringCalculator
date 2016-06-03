@@ -35,4 +35,8 @@ public class StringCalculatorTest {
 		assertThat(stringCalculator.calculateResult("5")).isEqualTo(5);
 	}
 	
+	@Test
+	public void shouldCalculateADoubleDigitResult(){
+		assertThat(stringCalculator.calculateResult("3,3")).isEqualTo(6);
+	}
 }

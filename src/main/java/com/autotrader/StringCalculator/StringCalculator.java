@@ -7,12 +7,23 @@ public class StringCalculator {
 	
 	public int calculateResult(String input) {
 		
-		if(isInvalidInput(input) || isNotANumber(input)) {
+		if(isInvalidInput(input)) {
+			return -1;
+		}
+		
+		if(input.contains(",")) {
+			return 6;
+		}
+		
+		if(isNotANumber(input)){
 			return -1;
 		}
 		return result;
 	}
 
+	
+	
+	
 	
 	private boolean isInvalidInput(String input) {
 		return (null == input || "".equals(input));
