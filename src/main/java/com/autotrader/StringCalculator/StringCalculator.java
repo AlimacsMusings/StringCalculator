@@ -14,17 +14,7 @@ public class StringCalculator {
 		}
 		
 		if(input.contains(",")) {
-			
-			StringTokenizer st = new StringTokenizer(input, ",", false);
-			int total = 0;
-			while(st.hasMoreTokens()){
-			
-				if(isNotANumber(st.nextToken())){
-					return -1;
-				}
-				total = total + result;
-			}
-			return total;
+			return calculateMultipleDigitResult(input);
 		}
 		
 		if(isNotANumber(input)){
@@ -32,8 +22,21 @@ public class StringCalculator {
 		}
 		return result;
 	}
-
 	
+
+	private int calculateMultipleDigitResult(String input) {
+
+		StringTokenizer st = new StringTokenizer(input, ",", false);
+		int total = 0;
+		while(st.hasMoreTokens()){
+		
+			if(isNotANumber(st.nextToken())){
+				return -1;
+			}
+			total = total + result;
+		}
+		return total;
+	}
 	
 	
 	
