@@ -1,58 +1,56 @@
 package com.autotrader.StringCalculator;
 
 import java.util.StringTokenizer;
+import java.util.regex.Pattern;
 
 public class StringCalculator {
-
-	private int result;
-
+	
+	private static String regex = "\\d+";
+	private static String delimiter = ",";
+	
 	
 	public int calculateResult(String input) {
 		
-		if(isInvalidInput(input)) {
+		if(isEmptyOrNull(input)){
 			return -1;
 		}
 		
-		if(input.contains(",")) {
-			return calculateMultipleDigitResult(input);
-		}
-		
-		if(isNotANumber(input)){
+		if(!checkTokens(input)) {
 			return -1;
 		}
+
+		return sumTokens(input);
+	}
+	
+
+	private boolean checkTokens(String input) {
+		StringTokenizer st = new StringTokenizer(input, delimiter, false);
+		Pattern pattern = Pattern.compile(regex);
+		String token;
+		while(st.hasMoreTokens()){
+			token = st.nextToken().trim();
+			if(!pattern.matcher(token).matches()){
+				return false;
+			}
+		}
+		return true;
+	}
+
+
+	private int sumTokens(String input) {		
+		StringTokenizer st = new StringTokenizer(input, delimiter, false);
+		int result = 0;
+		String token;
+		while(st.hasMoreTokens()){
+			token = st.nextToken().trim();
+			result = result + Integer.parseInt(token);
+		}		
 		return result;
 	}
 	
-
-	private int calculateMultipleDigitResult(String input) {
-
-		StringTokenizer st = new StringTokenizer(input, ",", false);
-		int total = 0;
-		while(st.hasMoreTokens()){
-		
-			if(isNotANumber(st.nextToken())){
-				return -1;
-			}
-			total = total + result;
-		}
-		return total;
-	}
 	
-	
-	
-	private boolean isInvalidInput(String input) {
+	private boolean isEmptyOrNull(String input) {
 		return (null == input || "".equals(input));
 	}
 	
-	
-	private boolean isNotANumber(String input){
-		
-		try {
-			result = Integer.parseInt(input);
-			
-		} catch (NumberFormatException nfe){
-			return true;
-		}
-		return false;
-	}
 }
