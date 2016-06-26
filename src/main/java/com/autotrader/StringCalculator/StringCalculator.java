@@ -7,7 +7,7 @@ public class StringCalculator {
 	
 	private static String regex = "\\d+";
 	private static String delimiter = ",";
-	
+	private int result;
 	
 	public int calculateResult(String input) {
 		
@@ -19,7 +19,7 @@ public class StringCalculator {
 			return -1;
 		}
 
-		return sumTokens(input);
+		return result;
 	}
 	
 
@@ -32,21 +32,26 @@ public class StringCalculator {
 			if(!pattern.matcher(token).matches()){
 				return false;
 			}
+			add(token);
 		}
 		return true;
 	}
-
-
-	private int sumTokens(String input) {		
-		StringTokenizer st = new StringTokenizer(input, delimiter, false);
-		int result = 0;
-		String token;
-		while(st.hasMoreTokens()){
-			token = st.nextToken().trim();
-			result = result + Integer.parseInt(token);
-		}		
-		return result;
+	
+	private void add(String token){
+		result = result + Integer.parseInt(token);
 	}
+
+
+//	private int sumTokens(String input) {		
+//		StringTokenizer st = new StringTokenizer(input, delimiter, false);
+//		int result = 0;
+//		String token;
+//		while(st.hasMoreTokens()){
+//			token = st.nextToken().trim();
+//			result = result + Integer.parseInt(token);
+//		}		
+//		return result;
+//	}
 	
 	
 	private boolean isEmptyOrNull(String input) {
