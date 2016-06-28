@@ -44,4 +44,11 @@ public class StringCalculatorTest {
 	public void shouldCalculateATripleDigitResult(){
 		assertThat(stringCalculator.calculateResult("3,4,5")).isEqualTo(12);
 	}
+	
+	@Test
+	public void validateRegexPattern(){
+		String random = "3,3,3";
+		String regex = "\\d+[\\s*[\\,]{0,1}\\s*\\d*]*";
+		assertThat(random.matches(regex)).isTrue();
+	}
 }
